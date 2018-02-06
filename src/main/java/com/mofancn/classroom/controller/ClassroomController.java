@@ -1,5 +1,9 @@
 package com.mofancn.classroom.controller;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,12 +32,14 @@ public class ClassroomController {
 			@ApiParam(required = true, value = "课堂名称", name = "classroomName") @RequestParam(value = "classroomName") String classroomName,
 			@ApiParam(required = true, value = "课堂学分", name = "classroomCredit") @RequestParam(value = "classroomCredit") Integer classroomCredit,
 			@ApiParam(required = true, value = "课堂学时", name = "classroomPeriod") @RequestParam(value = "classroomPeriod") Integer classroomPeriod,
+			@ApiParam(required = true, value = "课堂上课时间", name = "classroomSchooltime") @RequestParam(value = "classroomSchooltime") Integer classroomSchooltime,
 			@ApiParam(required = true, value = "课堂上课地点", name = "classroomPlace") @RequestParam(value = "classroomPlace") String classroomPlace,
-			@ApiParam(required = true, value = "课堂重复方式", name = "classroomRepetition") @RequestParam(value = "classroomRepetition") String classroomRepetition,
+			@ApiParam(required = true, value = "课堂重复方式", name = "classroomRepetition") @RequestParam(value = "classroomRepetition") Integer classroomRepetition,
 			@ApiParam(required = true, value = "用户TOKEN", name = "token") @RequestParam(value = "token") String token) {
 		MfClassroom classroom = new MfClassroom();
 		classroom.setClassroomCredit(classroomCredit);
 		classroom.setClassroomName(classroomName);
+		classroom.setClassroomSchooltime(classroomSchooltime);
 		classroom.setClassroomPeriod(classroomPeriod);
 		classroom.setClassroomPlace(classroomPlace);
 		classroom.setClassroomRepetition(classroomRepetition);
@@ -64,15 +70,19 @@ public class ClassroomController {
 	@ResponseBody
 	@ApiOperation(value = "修改课堂信息", httpMethod = "POST", response = MofancnResult.class, notes = "修改课堂信息")
 	public MofancnResult updateClassroom(
+			@ApiParam(required = true, value = "课堂ID", name = "classroomId") @RequestParam(value = "classroomId") Long classroomId,
 			@ApiParam(required = true, value = "课堂名称", name = "classroomName") @RequestParam(value = "classroomName") String classroomName,
 			@ApiParam(required = true, value = "课堂学分", name = "classroomCredit") @RequestParam(value = "classroomCredit") Integer classroomCredit,
 			@ApiParam(required = true, value = "课堂学时", name = "classroomPeriod") @RequestParam(value = "classroomPeriod") Integer classroomPeriod,
+			@ApiParam(required = true, value = "课堂上课时间", name = "classroomSchooltime") @RequestParam(value = "classroomSchooltime") Integer classroomSchooltime,
 			@ApiParam(required = true, value = "课堂上课地点", name = "classroomPlace") @RequestParam(value = "classroomPlace") String classroomPlace,
-			@ApiParam(required = true, value = "课堂重复方式", name = "classroomRepetition") @RequestParam(value = "classroomRepetition") String classroomRepetition,
+			@ApiParam(required = true, value = "课堂重复方式", name = "classroomRepetition") @RequestParam(value = "classroomRepetition") Integer classroomRepetition,
 			@ApiParam(required = true, value = "用户TOKEN", name = "token") @RequestParam(value = "token") String token) {
 		MfClassroom classroom = new MfClassroom();
+		classroom.setClassroomId(classroomId);
 		classroom.setClassroomCredit(classroomCredit);
 		classroom.setClassroomName(classroomName);
+		classroom.setClassroomSchooltime(classroomSchooltime);
 		classroom.setClassroomPeriod(classroomPeriod);
 		classroom.setClassroomPlace(classroomPlace);
 		classroom.setClassroomRepetition(classroomRepetition);
