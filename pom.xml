@@ -123,8 +123,11 @@
 					<path>/</path>
 				</configuration>
 			</plugin>
+			
+			
 
 		</plugins>
+
 		<finalName>classroom</finalName>
 	</build>
 </project>
